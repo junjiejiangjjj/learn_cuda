@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
+
+include(GNUInstallDirs)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+SET(PROJECT_NAME learn_cuda)
+PROJECT(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX CUDA)
+
+
+if(NOT DEFINED CMAKE_CUDA_STANDARD)
+    set(CMAKE_CUDA_STANDARD 11)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)    
+endif()
+
+include_directories(${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}) 
+link_directories(${CMAKE_CUDA_INCLUDE_DIRS})
+
+find_library(CUDART_LIBRARY cudart ${CMAKE_CUDA_IMPLICIT_LINK_DIRECTORIES})
+
+include_directories(
+  ${PROJECT_SOURCE_DIR}
+  )
+
+add_subdirectory(chapter1)

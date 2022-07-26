@@ -1,0 +1,1 @@
+add_executable(sumarraysonhost sumarraysonhost.cu)
